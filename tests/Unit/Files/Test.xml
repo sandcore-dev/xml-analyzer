@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<test>
+    <boolean-number>
+        <attribute>
+            <test0 foo="0"/>
+
+            <test1 foo="1"/>
+
+            <test2 foo="0"/>
+            <test2 foo="0"/>
+
+            <test3 foo="0"/>
+            <test3 foo="1"/>
+
+            <test4 foo="1"/>
+            <test4 foo="0"/>
+
+            <test5 foo="1"/>
+            <test5 foo="1"/>
+        </attribute>
+    </boolean-number>
+    <boolean-string>
+        <attribute>
+            <test0 foo="false"/>
+
+            <test1 foo="true"/>
+
+            <test2 foo="false"/>
+            <test2 foo="false"/>
+
+            <test3 foo="false"/>
+            <test3 foo="true"/>
+
+            <test4 foo="true"/>
+            <test4 foo="false"/>
+
+            <test5 foo="true"/>
+            <test5 foo="true"/>
+        </attribute>
+    </boolean-string>
+    <tiny-unsigned-integer>
+        <attribute>
+            <test0 foo="2"/>
+
+            <test1 foo="0"/>
+            <test1 foo="255"/>
+        </attribute>
+    </tiny-unsigned-integer>
+    <small-unsigned-integer>
+        <attribute>
+            <test0 foo="256"/>
+
+            <test1 foo="0"/>
+            <test1 foo="65535"/>
+        </attribute>
+    </small-unsigned-integer>
+    <medium-unsigned-integer>
+        <attribute>
+            <test0 foo="65536"/>
+
+            <test1 foo="0"/>
+            <test1 foo="16777215"/>
+        </attribute>
+    </medium-unsigned-integer>
+    <standard-unsigned-integer>
+        <attribute>
+            <test0 foo="16777216"/>
+
+            <test1 foo="0"/>
+            <test1 foo="4294967295"/>
+        </attribute>
+    </standard-unsigned-integer>
+    <big-unsigned-integer>
+        <attribute>
+            <test0 foo="4294967296"/>
+
+            <test1 foo="0"/>
+            <test1 foo="9223372036854775807"/>
+        </attribute>
+    </big-unsigned-integer>
+    <tiny-signed-integer>
+        <attribute>
+            <test0 foo="-1"/>
+
+            <test1 foo="-128"/>
+            <test1 foo="127"/>
+        </attribute>
+    </tiny-signed-integer>
+    <small-signed-integer>
+        <attribute>
+            <test0 foo="-32768"/>
+
+            <test1 foo="-32768"/>
+            <test1 foo="32767"/>
+
+            <test3 foo="-1"/>
+            <test3 foo="32767"/>
+        </attribute>
+    </small-signed-integer>
+    <medium-signed-integer>
+        <attribute>
+            <test0 foo="-8388608"/>
+
+            <test1 foo="-8388608"/>
+            <test1 foo="8388607"/>
+
+            <test3 foo="-1"/>
+            <test3 foo="8388607"/>
+        </attribute>
+    </medium-signed-integer>
+    <standard-signed-integer>
+        <attribute>
+            <test0 foo="-2147483648"/>
+
+            <test1 foo="-2147483648"/>
+            <test1 foo="2147483647"/>
+
+            <test3 foo="-1"/>
+            <test3 foo="2147483647"/>
+        </attribute>
+    </standard-signed-integer>
+    <big-signed-integer>
+        <attribute>
+            <test0 foo="-9223372036854775808"/>
+
+            <test1 foo="-9223372036854775808"/>
+            <test1 foo="9223372036854775807"/>
+
+            <test3 foo="-1"/>
+            <test3 foo="9223372036854775807"/>
+        </attribute>
+    </big-signed-integer>
+    <floating-point>
+        <attribute>
+            <test0 foo="-9223372036854775809"/>
+
+            <test1 foo="-0.0000000001"/>
+
+            <test2 foo="0.00000000001"/>
+
+            <test3 foo="9223372036854775808"/>
+        </attribute>
+    </floating-point>
+    <time>
+        <attribute>
+            <test0 foo="00:00:00"/>
+
+            <test1 foo="23:59:59"/>
+        </attribute>
+    </time>
+    <date>
+        <attribute>
+            <test0 foo="0000-01-01"/>
+
+            <test1 foo="0000-01-31"/>
+
+            <test2 foo="0000-12-31"/>
+        </attribute>
+    </date>
+    <date-time>
+        <attribute>
+            <test0 foo="0000-01-01 00:00:00"/>
+
+            <test1 foo="0000-01-31 00:00:00"/>
+
+            <test2 foo="0000-12-31 00:00:00"/>
+
+            <test3 foo="0000-01-01 23:59:59"/>
+
+            <test4 foo="0000-01-31 23:59:59"/>
+
+            <test5 foo="0000-12-31 23:59:59"/>
+        </attribute>
+    </date-time>
+    <url>
+        <attribute>
+            <test0 foo="http://domain.local"/>
+
+            <test1 foo="https://domain.local"/>
+
+            <test2 foo="http://domain.local:8080"/>
+
+            <test3 foo="https://domain.local:8080"/>
+
+            <test4 foo="http://domain.local/foo/bar/"/>
+
+            <test5 foo="https://domain.local/foo/bar/"/>
+
+            <test6 foo="http://domain.local:8080/foo/bar/"/>
+
+            <test7 foo="https://domain.local:8080/foo/bar/"/>
+        </attribute>
+    </url>
+    <name>
+        <attribute>
+            <test0 foo="Foo Bar"/>
+
+            <test1 foo="Foo Bar Baz"/>
+
+            <test2 foo="Foo Bar Baz Boo"/>
+
+            <test3 foo="Foo von Bar"/>
+
+            <test4 foo="Foo de Bar"/>
+        </attribute>
+    </name>
+    <enumeration>
+        <attribute>
+            <test0 foo="Foo"/>
+
+            <test1 foo="Bar"/>
+
+            <test2 foo="Foo"/>
+            <test2 foo="Bar"/>
+        </attribute>
+    </enumeration>
+    <random-string>
+        <attribute>
+            <test0 foo="FOO Bar Boo"/>
+
+            <test1 foo="123 456"/>
+        </attribute>
+    </random-string>
+</test>
