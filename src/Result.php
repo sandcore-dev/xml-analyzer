@@ -13,7 +13,9 @@ class Result
 
     public function __construct(array $result)
     {
-        $this->result = $result;
+        $this->setType($result['self'] ?? null);
+        $this->setAttributes($result['attributes'] ?? []);
+        $this->setChildren($result['children'] ?? []);
     }
 
     public function getType(): ?Type
@@ -21,10 +23,22 @@ class Result
         return $this->result['self'] ?? null;
     }
 
+    protected function setType(?Type $type): void
+    {
+        $this->result['self'] = $type;
+    }
+
     /** @return Type[] */
     public function getAttributes(): array
     {
         return $this->result['attributes'] ?? [];
+    }
+
+    protected function setAttributes(array $attributes): void
+    {
+        foreach ($attributes as $name => $type) {
+            $this->setAttribute($name, $type);
+        }
     }
 
     /** @return Result[] */
@@ -46,14 +60,27 @@ class Result
         return $this->children;
     }
 
-    public function __get($name): ?Type
+    protected function setChildren(array $children): void
+    {
+        foreach ($children as $name => $result) {
+            $this->setChild($name, $result ?? []);
+        }
+    }
+
+    public function __get(string $name): ?Type
     {
         return $this->getAttribute($name);
     }
 
-    public function getAttribute($name): ?Type
+    public function getAttribute(string $name): ?Type
     {
         return $this->result['attributes'][$name] ?? null;
+    }
+
+    protected function setAttribute(string $name, ?Type $type): void
+    {
+        $this->result['attributes'] = $this->result['attributes'] ?? [];
+        $this->result['attributes'][$name] = $type;
     }
 
     public function __call(string $name, array $arguments): ?self
@@ -64,12 +91,13 @@ class Result
     public function getChild(string $name): ?self
     {
         return isset($this->result['children'][$name])
-            ? new self($this->result['children'][$name])
+            ? new static($this->result['children'][$name])
             : null;
     }
 
-    public function getData(): array
+    protected function setChild(string $name, array $data): void
     {
-        return $this->result;
+        $this->result['children'] = $this->result['children'] ?? [];
+        $this->result['children'][$name] = $data;
     }
 }
