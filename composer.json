@@ -1,6 +1,7 @@
 {
     "name": "sandcore-dev/xml-analyzer",
     "description": "Analyze XML files to guess the range of values of attributes and text nodes",
+    "keywords": ["xml", "php"],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -15,6 +16,10 @@
         "php": "^7.3",
         "ext-dom": "*"
     },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.5",
+        "phpunit/phpunit": "^9.5"
+    },
     "autoload": {
         "psr-4": {
             "SandcoreDev\\XmlAnalyzer\\": "src/"
@@ -24,10 +29,6 @@
         "psr-4": {
             "SandcoreDev\\XmlAnalyzer\\Tests\\": "tests/"
         }
-    },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "^3.5",
-        "phpunit/phpunit": "^9.5"
     },
     "extra": {
         "branch-alias": {
