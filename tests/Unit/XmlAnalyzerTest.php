@@ -88,14 +88,16 @@ class XmlAnalyzerTest extends TestCase
         $data = [];
 
         foreach ($this->tagsTypes as $tag => $typeClass) {
-            $data += $this->getTests($tag, $tag, $typeClass, true);
+            foreach (['attribute' => 'foo', 'node' => null] as $childNode => $attributeName) {
+                $data += $this->getTests($tag, $tag, $childNode, $attributeName, $typeClass, true);
 
-            foreach ($this->tagsTypes as $failTag => $failTypeClass) {
-                if ($failTag === $tag) {
-                    continue;
+                foreach ($this->tagsTypes as $failTag => $failTypeClass) {
+                    if ($failTag === $tag) {
+                        continue;
+                    }
+
+                    $data += $this->getTests($tag, $failTag, $childNode, $attributeName, $typeClass, false);
                 }
-
-                $data += $this->getTests($tag, $failTag, $typeClass, false);
             }
         }
 
@@ -104,30 +106,43 @@ class XmlAnalyzerTest extends TestCase
 
     /**
      * @dataProvider dataProviderTypes
-     * @param Type $item
+     * @param Type|null $item
      * @param string $className
      * @param bool $isExpected
      */
-    public function testTypes(Type $item, string $className, bool $isExpected): void
+    public function testTypes(?Type $item, string $className, bool $isExpected): void
     {
+        $actualClass = $item === null
+            ? null
+            : get_class($item);
+
         if ($isExpected) {
-            $this->assertEquals($className, get_class($item));
+            $this->assertEquals($className, $actualClass);
         } else {
-            $this->assertNotEquals($className, get_class($item));
+            $this->assertNotEquals($className, $actualClass);
         }
     }
 
     /**
      * @param string $subject
      * @param string $tag
+     * @param string $childName
+     * @param string|null $attributeName
      * @param string $className
      * @param bool $isExpected
      * @return array
      * @throws LoadingException
      */
-    private function getTests(string $subject, string $tag, string $className, bool $isExpected): array
-    {
-        $id = $subject === $tag
+    private function getTests(
+        string $subject,
+        string $tag,
+        string $childName,
+        ?string $attributeName,
+        string $className,
+        bool $isExpected
+    ): array {
+        $id = "{$childName} ";
+        $id .= $subject === $tag
             ? $subject
             : "{$subject} {$tag}";
 
@@ -142,19 +157,19 @@ class XmlAnalyzerTest extends TestCase
             throw new Exception("Child {$subject} not found");
         }
 
-        $attribute = $subjectChild->getChild('attribute');
-
+        $testNode = $subjectChild->getChild($childName);
+        $items = $testNode->getChildren();
         $tests = [];
 
-        $items = $attribute->getChildren();
-
         if (empty($items)) {
-            throw new Exception("No attribute children found for '{$tag}'");
+            throw new Exception("No attribute children found for '{$tag}'->'{$childName}'");
         }
 
         foreach ($items as $index => $item) {
             $tests["{$id} {$succeedOrFail} #{$index}"] = [
-                $item->getAttribute('foo'),
+                $attributeName === null
+                    ? $item->getType()
+                    : $item->getAttribute($attributeName),
                 $className,
                 $isExpected,
             ];

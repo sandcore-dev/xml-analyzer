@@ -18,6 +18,23 @@
             <test5 foo="1"/>
             <test5 foo="1"/>
         </attribute>
+        <node>
+            <test0>0</test0>
+
+            <test1>1</test1>
+
+            <test2>0</test2>
+            <test2>0</test2>
+
+            <test3>0</test3>
+            <test3>1</test3>
+
+            <test4>1</test4>
+            <test4>0</test4>
+
+            <test5>1</test5>
+            <test5>1</test5>
+        </node>
     </boolean-number>
     <boolean-string>
         <attribute>
@@ -37,6 +54,23 @@
             <test5 foo="true"/>
             <test5 foo="true"/>
         </attribute>
+        <node>
+            <test0>false</test0>
+
+            <test1>true</test1>
+
+            <test2>false</test2>
+            <test2>false</test2>
+
+            <test3>false</test3>
+            <test3>true</test3>
+
+            <test4>true</test4>
+            <test4>false</test4>
+
+            <test5>true</test5>
+            <test5>true</test5>
+        </node>
     </boolean-string>
     <tiny-unsigned-integer>
         <attribute>
@@ -45,6 +79,12 @@
             <test1 foo="0"/>
             <test1 foo="255"/>
         </attribute>
+        <node>
+            <test0>2</test0>
+
+            <test1>0</test1>
+            <test1>255</test1>
+        </node>
     </tiny-unsigned-integer>
     <small-unsigned-integer>
         <attribute>
@@ -53,6 +93,12 @@
             <test1 foo="0"/>
             <test1 foo="65535"/>
         </attribute>
+        <node>
+            <test0>256</test0>
+
+            <test1>0</test1>
+            <test1>65535</test1>
+        </node>
     </small-unsigned-integer>
     <medium-unsigned-integer>
         <attribute>
@@ -61,6 +107,12 @@
             <test1 foo="0"/>
             <test1 foo="16777215"/>
         </attribute>
+        <node>
+            <test0>65536</test0>
+
+            <test1>0</test1>
+            <test1>16777215</test1>
+        </node>
     </medium-unsigned-integer>
     <standard-unsigned-integer>
         <attribute>
@@ -69,6 +121,12 @@
             <test1 foo="0"/>
             <test1 foo="4294967295"/>
         </attribute>
+        <node>
+            <test0>16777216</test0>
+
+            <test1>0</test1>
+            <test1>4294967295</test1>
+        </node>
     </standard-unsigned-integer>
     <big-unsigned-integer>
         <attribute>
@@ -77,6 +135,12 @@
             <test1 foo="0"/>
             <test1 foo="9223372036854775807"/>
         </attribute>
+        <node>
+            <test0>4294967296</test0>
+
+            <test1>0</test1>
+            <test1>9223372036854775807</test1>
+        </node>
     </big-unsigned-integer>
     <tiny-signed-integer>
         <attribute>
@@ -85,6 +149,12 @@
             <test1 foo="-128"/>
             <test1 foo="127"/>
         </attribute>
+        <node>
+            <test0>-1</test0>
+
+            <test1>-128</test1>
+            <test1>127</test1>
+        </node>
     </tiny-signed-integer>
     <small-signed-integer>
         <attribute>
@@ -96,6 +166,15 @@
             <test3 foo="-1"/>
             <test3 foo="32767"/>
         </attribute>
+        <node>
+            <test0>-32768</test0>
+
+            <test1>-32768</test1>
+            <test1>32767</test1>
+
+            <test3>-1</test3>
+            <test3>32767</test3>
+        </node>
     </small-signed-integer>
     <medium-signed-integer>
         <attribute>
@@ -107,6 +186,15 @@
             <test3 foo="-1"/>
             <test3 foo="8388607"/>
         </attribute>
+        <node>
+            <test0>-8388608</test0>
+
+            <test1>-8388608</test1>
+            <test1>8388607</test1>
+
+            <test3>-1</test3>
+            <test3>8388607</test3>
+        </node>
     </medium-signed-integer>
     <standard-signed-integer>
         <attribute>
@@ -118,6 +206,15 @@
             <test3 foo="-1"/>
             <test3 foo="2147483647"/>
         </attribute>
+        <node>
+            <test0>-2147483648</test0>
+
+            <test1>-2147483648</test1>
+            <test1>2147483647</test1>
+
+            <test3>-1</test3>
+            <test3>2147483647</test3>
+        </node>
     </standard-signed-integer>
     <big-signed-integer>
         <attribute>
@@ -129,6 +226,15 @@
             <test3 foo="-1"/>
             <test3 foo="9223372036854775807"/>
         </attribute>
+        <node>
+            <test0>-9223372036854775808</test0>
+
+            <test1>-9223372036854775808</test1>
+            <test1>9223372036854775807</test1>
+
+            <test3>-1</test3>
+            <test3>9223372036854775807</test3>
+        </node>
     </big-signed-integer>
     <floating-point>
         <attribute>
@@ -140,6 +246,15 @@
 
             <test3 foo="9223372036854775808"/>
         </attribute>
+        <node>
+            <test0>-9223372036854775809</test0>
+
+            <test1>-0.0000000001</test1>
+
+            <test2>0.00000000001</test2>
+
+            <test3>9223372036854775808</test3>
+        </node>
     </floating-point>
     <time>
         <attribute>
@@ -147,6 +262,11 @@
 
             <test1 foo="23:59:59"/>
         </attribute>
+        <node>
+            <test0>00:00:00</test0>
+
+            <test1>23:59:59</test1>
+        </node>
     </time>
     <date>
         <attribute>
@@ -156,6 +276,13 @@
 
             <test2 foo="0000-12-31"/>
         </attribute>
+        <node>
+            <test0>0000-01-01</test0>
+
+            <test1>0000-01-31</test1>
+
+            <test2>0000-12-31</test2>
+        </node>
     </date>
     <date-time>
         <attribute>
@@ -171,6 +298,19 @@
 
             <test5 foo="0000-12-31 23:59:59"/>
         </attribute>
+        <node>
+            <test0>0000-01-01 00:00:00</test0>
+
+            <test1>0000-01-31 00:00:00</test1>
+
+            <test2>0000-12-31 00:00:00</test2>
+
+            <test3>0000-01-01 23:59:59</test3>
+
+            <test4>0000-01-31 23:59:59</test4>
+
+            <test5>0000-12-31 23:59:59</test5>
+        </node>
     </date-time>
     <url>
         <attribute>
@@ -190,6 +330,23 @@
 
             <test7 foo="https://domain.local:8080/foo/bar/"/>
         </attribute>
+        <node>
+            <test0>http://domain.local</test0>
+
+            <test1>https://domain.local</test1>
+
+            <test2>http://domain.local:8080</test2>
+
+            <test3>https://domain.local:8080</test3>
+
+            <test4>http://domain.local/foo/bar/</test4>
+
+            <test5>https://domain.local/foo/bar/</test5>
+
+            <test6>http://domain.local:8080/foo/bar/</test6>
+
+            <test7>https://domain.local:8080/foo/bar/</test7>
+        </node>
     </url>
     <name>
         <attribute>
@@ -203,6 +360,17 @@
 
             <test4 foo="Foo de Bar"/>
         </attribute>
+        <node>
+            <test0>Foo Bar</test0>
+
+            <test1>Foo Bar Baz</test1>
+
+            <test2>Foo Bar Baz Boo</test2>
+
+            <test3>Foo von Bar</test3>
+
+            <test4>Foo de Bar</test4>
+        </node>
     </name>
     <enumeration>
         <attribute>
@@ -213,6 +381,14 @@
             <test2 foo="Foo"/>
             <test2 foo="Bar"/>
         </attribute>
+        <node>
+            <test0>Foo</test0>
+
+            <test1>Bar</test1>
+
+            <test2>Foo</test2>
+            <test2>Bar</test2>
+        </node>
     </enumeration>
     <random-string>
         <attribute>
@@ -220,5 +396,10 @@
 
             <test1 foo="123 456"/>
         </attribute>
+        <node>
+            <test0>FOO Bar Boo</test0>
+
+            <test1>123 456</test1>
+        </node>
     </random-string>
 </test>
