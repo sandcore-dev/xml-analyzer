@@ -2,7 +2,9 @@
 
 namespace SandcoreDev\XmlAnalyzer\Tests\Unit;
 
+use DOMDocument;
 use Exception;
+use Mockery;
 use PHPUnit\Framework\TestCase;
 use SandcoreDev\XmlAnalyzer\Contracts\Type;
 use SandcoreDev\XmlAnalyzer\Exceptions\LoadingException;
@@ -62,18 +64,39 @@ class XmlAnalyzerTest extends TestCase
     }
 
     /**
+     * @covers ::__construct
      * @covers ::processFile
      * @throws LoadingException
      */
     public function testProcessFile(): void
     {
-        $result = $this->getProcessResult();
+        $result = (new XmlAnalyzer())->processFile(__DIR__ . '/Files/Test.xml');
 
         $this->assertInstanceOf(Result::class, $result);
     }
 
     /**
+     * @covers ::__construct
+     * @covers ::processFile
+     * @throws LoadingException
+     */
+    public function testProcessFileException(): void
+    {
+        $this->expectException(LoadingException::class);
+
+        (new XmlAnalyzer())->processFile(__DIR__ . '/Files/DoesNotExist.xml');
+    }
+
+    /**
+     * @covers ::__construct
      * @covers ::process
+     * @covers ::analyze
+     * @covers ::analyzeTextNode
+     * @covers ::hasOnlyTextNodes
+     * @covers ::analyzeAttributes
+     * @covers ::analyzeChildNodes
+     * @covers ::analyzeValue
+     * @covers ::getResult
      * @throws LoadingException
      */
     public function testProcess(): void
@@ -81,6 +104,34 @@ class XmlAnalyzerTest extends TestCase
         $result = (new XmlAnalyzer())->process(file_get_contents(__DIR__ . '/Files/Test.xml'));
 
         $this->assertEquals($this->getProcessResult(), $result);
+    }
+
+    /**
+     * @covers ::__construct
+     * @covers ::process
+     * @throws LoadingException
+     */
+    public function testProcessException(): void
+    {
+        $this->expectException(LoadingException::class);
+        (new XmlAnalyzer())->process('');
+    }
+
+    /**
+     * @covers ::__construct
+     * @covers ::process
+     * @throws LoadingException
+     */
+    public function testDomDocumentInjection(): void
+    {
+        $this->expectException(LoadingException::class);
+
+        $domMock = Mockery::mock(DOMDocument::class);
+        $domMock->shouldReceive('loadXML')
+            ->withArgs(['foo'])
+            ->andReturnFalse();
+
+        (new XmlAnalyzer($domMock))->process('foo');
     }
 
     public function dataProviderTypes(): array

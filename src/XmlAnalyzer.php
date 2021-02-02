@@ -5,7 +5,6 @@ namespace SandcoreDev\XmlAnalyzer;
 use DOMCharacterData;
 use DOMDocument;
 use DOMElement;
-use DOMNode;
 use DOMNodeList;
 use SandcoreDev\XmlAnalyzer\Contracts\Type;
 use SandcoreDev\XmlAnalyzer\Exceptions\LoadingException;
@@ -72,7 +71,7 @@ class XmlAnalyzer
     public function process(string ...$xmlStrings): Result
     {
         foreach ($xmlStrings as $xmlString) {
-            if (!$this->dom->loadXML($xmlString)) {
+            if (!@$this->dom->loadXML($xmlString)) {
                 throw new LoadingException();
             }
 
@@ -85,7 +84,7 @@ class XmlAnalyzer
     public function processFile(string ...$xmlFilenames): Result
     {
         foreach ($xmlFilenames as $xmlFilename) {
-            if (!$this->dom->load($xmlFilename)) {
+            if (!@$this->dom->load($xmlFilename)) {
                 throw new LoadingException();
             }
 
@@ -95,12 +94,8 @@ class XmlAnalyzer
         return $this->getResult();
     }
 
-    protected function analyze(DOMNode $node, array &$data): void
+    protected function analyze(DOMElement $node, array &$data): void
     {
-        if (!($node instanceof DOMElement)) {
-            return;
-        }
-
         $data[$node->nodeName] = $data[$node->nodeName]
             ?? [];
 
