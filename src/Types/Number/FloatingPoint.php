@@ -12,16 +12,19 @@ class FloatingPoint extends BaseNumber
         return is_numeric($value);
     }
 
+    /** @codeCoverageIgnore */
     public static function hasRange(): bool
     {
         return false;
     }
 
+    /** @codeCoverageIgnore */
     public static function minValue(): ?float
     {
         return null;
     }
 
+    /** @codeCoverageIgnore */
     public static function maxValue(): ?float
     {
         return null;
@@ -43,6 +46,7 @@ class FloatingPoint extends BaseNumber
         throw new TypeMismatchException();
     }
 
+    /** @codeCoverageIgnore */
     public function values(): array
     {
         return [];

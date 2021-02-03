@@ -9,16 +9,19 @@ abstract class BaseType implements Type
     /** @var array */
     protected $values = [];
 
+    /** @codeCoverageIgnore */
     public static function hasRange(): bool
     {
         return false;
     }
 
+    /** @codeCoverageIgnore */
     public static function minValue(): ?float
     {
         return null;
     }
 
+    /** @codeCoverageIgnore */
     public static function maxValue(): ?float
     {
         return null;

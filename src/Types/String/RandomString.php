@@ -18,6 +18,11 @@ class RandomString extends BaseType
         $this->values[] = substr_count($value, ' ') + 1;
     }
 
+    /**
+     * @codeCoverageIgnore
+     * @param string $value
+     * @return bool
+     */
     public static function is(string $value): bool
     {
         return true;

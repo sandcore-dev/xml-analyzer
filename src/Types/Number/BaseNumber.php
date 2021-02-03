@@ -34,6 +34,7 @@ abstract class BaseNumber implements Type
         }
     }
 
+    /** @codeCoverageIgnore */
     public function values(): array
     {
         return [];

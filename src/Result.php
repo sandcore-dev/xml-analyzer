@@ -49,12 +49,9 @@ class Result
         }
 
         if (empty($this->children)) {
-            $this->children = array_map(
-                function (string $name) {
-                    return $this->getChild($name);
-                },
-                array_keys($this->result['children'])
-            );
+            foreach ($this->result['children'] as $key => $value) {
+                $this->children[$key] = $this->getChild($key);
+            }
         }
 
         return $this->children;

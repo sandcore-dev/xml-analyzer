@@ -17,6 +17,9 @@ class ResultTest extends TestCase
      * @covers ::__construct
      * @covers ::setType
      * @covers ::getType
+     * @covers ::setAttributes
+     * @covers ::setChildren
+     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::__construct
      */
     public function testGetType(): void
     {
@@ -33,6 +36,7 @@ class ResultTest extends TestCase
     }
 
     /**
+     * @covers ::__construct
      * @covers ::setType
      */
     public function testSetTypeFailure(): void
@@ -49,6 +53,9 @@ class ResultTest extends TestCase
      * @covers ::setAttributes
      * @covers ::getAttribute
      * @covers ::setAttribute
+     * @covers ::setChildren
+     * @covers ::setType
+     * @covers \SandcoreDev\XmlAnalyzer\Types\Timestamp\Time::__construct
      */
     public function testGetAttributes(): void
     {
@@ -76,7 +83,10 @@ class ResultTest extends TestCase
     }
 
     /**
+     * @covers ::__construct
      * @covers ::setAttribute
+     * @covers ::setAttributes
+     * @covers ::setType
      */
     public function testSetAttributeFailure(): void
     {
@@ -92,6 +102,8 @@ class ResultTest extends TestCase
      * @covers ::setChildren
      * @covers ::getChild
      * @covers ::setChild
+     * @covers ::setAttributes
+     * @covers ::setType
      */
     public function testGetChildren(): void
     {
@@ -107,6 +119,7 @@ class ResultTest extends TestCase
         $this->assertIsArray($result->getChildren());
         $this->assertNotEmpty($result->getChildren());
         $this->assertInstanceOf(Result::class, $result->getChild('foo'));
+        $this->assertInstanceOf(Result::class, $result->getChildren()['foo']);
 
         $result = new Result([
             'children' => [
@@ -115,11 +128,17 @@ class ResultTest extends TestCase
         ]);
         $this->assertNotEmpty($result->getChildren());
         $this->assertInstanceOf(Result::class, $result->getChild('foo'));
+        $this->assertInstanceOf(Result::class, $result->getChildren()['foo']);
+        /** @noinspection PhpUndefinedMethodInspection */
         $this->assertInstanceOf(Result::class, $result->foo());
     }
 
     /**
+     * @covers ::__construct
      * @covers ::setChild
+     * @covers ::setChildren
+     * @covers ::setAttributes
+     * @covers ::setType
      */
     public function testSetChildFailure(): void
     {
