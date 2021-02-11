@@ -2,17 +2,10 @@
 
 namespace SandcoreDev\XmlAnalyzer\Types\Number;
 
-use SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Unsigned as TinyUnsigned;
-
-class Boolean extends TinyUnsigned
+class Boolean extends BaseUnsignedInteger
 {
-    public static function is(string $value): bool
+    public static function maxValue(): ?string
     {
-        return $value === '0' || $value === '1';
-    }
-
-    public static function maxValue(): ?float
-    {
-        return 1;
+        return '1';
     }
 }

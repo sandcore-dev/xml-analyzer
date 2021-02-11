@@ -2,12 +2,12 @@
 
 namespace SandcoreDev\XmlAnalyzer\Types\Number\Standard;
 
-use SandcoreDev\XmlAnalyzer\Types\Number\Big\Unsigned as BigUnsigned;
+use SandcoreDev\XmlAnalyzer\Types\Number\BaseUnsignedInteger;
 
-class Unsigned extends BigUnsigned
+class Unsigned extends BaseUnsignedInteger
 {
-    public static function maxValue(): ?float
+    public static function maxValue(): ?string
     {
-        return 4294967295;
+        return '4294967295';
     }
 }

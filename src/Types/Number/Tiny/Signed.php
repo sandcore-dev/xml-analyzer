@@ -2,17 +2,17 @@
 
 namespace SandcoreDev\XmlAnalyzer\Types\Number\Tiny;
 
-use SandcoreDev\XmlAnalyzer\Types\Number\Small\Signed as SmallSigned;
+use SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger;
 
-class Signed extends SmallSigned
+class Signed extends BaseInteger
 {
-    public static function minValue(): ?float
+    public static function minValue(): ?string
     {
-        return -128;
+        return '-128';
     }
 
-    public static function maxValue(): ?float
+    public static function maxValue(): ?string
     {
-        return 127;
+        return '127';
     }
 }

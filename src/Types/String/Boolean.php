@@ -3,22 +3,24 @@
 namespace SandcoreDev\XmlAnalyzer\Types\String;
 
 use SandcoreDev\XmlAnalyzer\Contracts\Type;
+use SandcoreDev\XmlAnalyzer\Exceptions\TypeMismatchException;
 
 class Boolean extends Enumeration
 {
-    public static function is(string $value): bool
+    public static function isNot(string $value): bool
     {
-        return $value === 'true' || $value === 'false';
+        return $value !== 'true' && $value !== 'false';
     }
 
     /**
-     * @noinspection PhpMissingParentConstructorInspection
-     * @noinspection PhpUnusedParameterInspection
      * @param string $value
      * @param Type|null $type
+     * @throws TypeMismatchException
      */
     public function __construct(string $value, ?Type $type)
     {
+        parent::__construct($value, $type);
+
         $this->values = ['true', 'false'];
     }
 }

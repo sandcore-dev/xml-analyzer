@@ -2,12 +2,12 @@
 
 namespace SandcoreDev\XmlAnalyzer\Types\Number\Small;
 
-use SandcoreDev\XmlAnalyzer\Types\Number\Medium\Unsigned as MediumUnsigned;
+use SandcoreDev\XmlAnalyzer\Types\Number\BaseUnsignedInteger;
 
-class Unsigned extends MediumUnsigned
+class Unsigned extends BaseUnsignedInteger
 {
-    public static function maxValue(): ?float
+    public static function maxValue(): ?string
     {
-        return 65535;
+        return '65535';
     }
 }

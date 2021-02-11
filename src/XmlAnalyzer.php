@@ -8,6 +8,7 @@ use DOMElement;
 use DOMNodeList;
 use SandcoreDev\XmlAnalyzer\Contracts\Type;
 use SandcoreDev\XmlAnalyzer\Exceptions\LoadingException;
+use SandcoreDev\XmlAnalyzer\Exceptions\TypeMismatchException;
 use SandcoreDev\XmlAnalyzer\Types\Number;
 use SandcoreDev\XmlAnalyzer\Types\String\Boolean;
 use SandcoreDev\XmlAnalyzer\Types\String\Enumeration;
@@ -161,10 +162,10 @@ class XmlAnalyzer
     {
         /** @var Type $attributeType */
         foreach ($this->attributeTypes as $attributeType) {
-            if ($attributeType::is($value)) {
-                if ($type === null || $type instanceof $attributeType) {
-                    return new $attributeType($value, $type);
-                }
+            try {
+                return new $attributeType($value, $type);
+            } /** @noinspection PhpRedundantCatchClauseInspection */ catch (TypeMismatchException $e) {
+                // continue
             }
         }
 

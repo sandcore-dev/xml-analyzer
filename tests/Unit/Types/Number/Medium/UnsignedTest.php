@@ -3,20 +3,16 @@
 namespace SandcoreDev\XmlAnalyzer\Tests\Unit\Types\Number\Medium;
 
 use SandcoreDev\XmlAnalyzer\Tests\Unit\Types\BaseTypeTest;
-use SandcoreDev\XmlAnalyzer\Types\Number\Medium\Unsigned;
 
 /**
  * @coversDefaultClass \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Unsigned
  */
 class UnsignedTest extends BaseTypeTest
 {
-    public function dataProviderType(): array
-    {
-        return [
-            [
-                'medium-unsigned-integer',
-                Unsigned::class,
-            ],
-        ];
-    }
+    protected static $allowed = [
+        self::BOOLEAN_NUMBER,
+        self::TINY_UNSIGNED_INTEGER,
+        self::SMALL_UNSIGNED_INTEGER,
+        self::MEDIUM_UNSIGNED_INTEGER,
+    ];
 }

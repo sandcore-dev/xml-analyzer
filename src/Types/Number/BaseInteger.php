@@ -2,36 +2,25 @@
 
 namespace SandcoreDev\XmlAnalyzer\Types\Number;
 
-use SandcoreDev\XmlAnalyzer\Contracts\Type;
-use SandcoreDev\XmlAnalyzer\Exceptions\TypeMismatchException;
+use Brick\Math\BigInteger;
+use Brick\Math\Exception\MathException;
 
 abstract class BaseInteger extends BaseNumber
 {
-    public static function is(string $value): bool
+    public static function isNot(string $value): bool
     {
-        return (sprintf('%d', $value) === $value)
-            && $value >= static::minValue()
-            && $value <= static::maxValue();
-    }
-
-    /**
-     * @noinspection PhpMissingParentConstructorInspection
-     * @noinspection PhpUnusedParameterInspection
-     * @param string $value
-     * @param Type|null $type
-     * @throws TypeMismatchException
-     */
-    public function __construct(string $value, ?Type $type)
-    {
-        if ($type === null) {
-            return;
+        if (!is_numeric($value)) {
+            return true;
         }
 
-        $minValue = sprintf('%d', $type::minValue());
-        $maxValue = sprintf('%d', $type::maxValue());
+        try {
+            $bigInteger = BigInteger::of($value);
 
-        if (!static::hasRange() || !static::is($minValue) || !static::is($maxValue)) {
-            throw new TypeMismatchException();
+            return
+                $bigInteger->isLessThan(static::minValue())
+                || $bigInteger->isGreaterThan(static::maxValue());
+        } catch (MathException $e) {
+            return true;
         }
     }
 }

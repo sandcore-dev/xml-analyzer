@@ -6,13 +6,13 @@ use SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger;
 
 class Signed extends BaseInteger
 {
-    public static function minValue(): ?float
+    public static function minValue(): ?string
     {
-        return PHP_INT_MIN;
+        return '-9223372036854775808';
     }
 
-    public static function maxValue(): ?float
+    public static function maxValue(): ?string
     {
-        return PHP_INT_MAX;
+        return '9223372036854775807';
     }
 }

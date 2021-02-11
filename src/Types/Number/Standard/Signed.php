@@ -2,17 +2,17 @@
 
 namespace SandcoreDev\XmlAnalyzer\Types\Number\Standard;
 
-use SandcoreDev\XmlAnalyzer\Types\Number\Big\Signed as BigSigned;
+use SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger;
 
-class Signed extends BigSigned
+class Signed extends BaseInteger
 {
-    public static function minValue(): ?float
+    public static function minValue(): ?string
     {
-        return -2147483648;
+        return '-2147483648';
     }
 
-    public static function maxValue(): ?float
+    public static function maxValue(): ?string
     {
-        return 2147483647;
+        return '2147483647';
     }
 }

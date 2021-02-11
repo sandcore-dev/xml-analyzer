@@ -2,12 +2,12 @@
 
 namespace SandcoreDev\XmlAnalyzer\Types\Number\Tiny;
 
-use SandcoreDev\XmlAnalyzer\Types\Number\Small\Unsigned as SmallUnsigned;
+use SandcoreDev\XmlAnalyzer\Types\Number\BaseUnsignedInteger;
 
-class Unsigned extends SmallUnsigned
+class Unsigned extends BaseUnsignedInteger
 {
-    public static function maxValue(): ?float
+    public static function maxValue(): ?string
     {
-        return 255;
+        return '255';
     }
 }

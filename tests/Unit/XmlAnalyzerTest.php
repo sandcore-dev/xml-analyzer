@@ -61,6 +61,8 @@ class XmlAnalyzerTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         static::$result = (new XmlAnalyzer())->processFile(__DIR__ . '/Files/Test.xml');
+
+        //die(print_r(static::$result, true));
     }
 
     /**
@@ -286,10 +288,7 @@ class XmlAnalyzerTest extends TestCase
         string $className,
         bool $isExpected
     ): array {
-        $id = "{$childName} ";
-        $id .= $subject === $tag
-            ? $subject
-            : "{$subject} {$tag}";
+        $id = "{$subject} {$childName} {$tag}";
 
         $succeedOrFail = $isExpected
             ? 'succeed'
@@ -311,7 +310,7 @@ class XmlAnalyzerTest extends TestCase
         }
 
         foreach ($items as $index => $item) {
-            $tests["{$id} {$succeedOrFail} #{$index}"] = [
+            $tests["{$id} {$succeedOrFail} {$index}"] = [
                 $attributeName === null
                     ? $item->getType()
                     : $item->getAttribute($attributeName),

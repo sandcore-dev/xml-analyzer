@@ -6,8 +6,8 @@ use SandcoreDev\XmlAnalyzer\Types\Number\BaseUnsignedInteger;
 
 class Unsigned extends BaseUnsignedInteger
 {
-    public static function maxValue(): ?float
+    public static function maxValue(): ?string
     {
-        return PHP_INT_MAX;
+        return '18446744073709551615';
     }
 }
