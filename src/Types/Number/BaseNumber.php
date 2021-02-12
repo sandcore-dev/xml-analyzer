@@ -21,6 +21,7 @@ abstract class BaseNumber extends RandomString
         }
     }
 
+    /** @codeCoverageIgnore */
     public static function hasRange(): bool
     {
         return true;

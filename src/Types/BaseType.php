@@ -26,16 +26,19 @@ abstract class BaseType implements Type
         return true;
     }
 
+    /** @codeCoverageIgnore */
     public static function hasRange(): bool
     {
         return false;
     }
 
+    /** @codeCoverageIgnore */
     public static function minValue(): ?string
     {
         return null;
     }
 
+    /** @codeCoverageIgnore */
     public static function maxValue(): ?string
     {
         return null;
@@ -54,6 +57,7 @@ abstract class BaseType implements Type
         }
     }
 
+    /** @codeCoverageIgnore */
     public function values(): array
     {
         return $this->values;
