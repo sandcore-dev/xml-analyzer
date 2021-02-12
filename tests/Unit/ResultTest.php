@@ -17,9 +17,12 @@ class ResultTest extends TestCase
      * @covers ::__construct
      * @covers ::setType
      * @covers ::getType
-     * @covers ::setAttributes
-     * @covers ::setChildren
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Result::setAttributes
+     * @uses \SandcoreDev\XmlAnalyzer\Result::setChildren
+     * @uses \SandcoreDev\XmlAnalyzer\Types\BaseType::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\BaseUnsignedInteger::minValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Boolean::maxValue
      */
     public function testGetType(): void
     {
@@ -53,9 +56,10 @@ class ResultTest extends TestCase
      * @covers ::setAttributes
      * @covers ::getAttribute
      * @covers ::setAttribute
-     * @covers ::setChildren
-     * @covers ::setType
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Timestamp\Time::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Result::setChildren
+     * @uses \SandcoreDev\XmlAnalyzer\Result::setType
+     * @uses \SandcoreDev\XmlAnalyzer\Types\BaseType::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\Time::isNot
      */
     public function testGetAttributes(): void
     {

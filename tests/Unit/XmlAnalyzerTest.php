@@ -66,59 +66,67 @@ class XmlAnalyzerTest extends TestCase
     }
 
     /**
-     * @covers ::__construct
      * @covers ::processFile
-     * @covers ::analyze
-     * @covers ::analyzeAttributes
-     * @covers ::analyzeChildNodes
-     * @covers ::analyzeTextNode
-     * @covers ::analyzeValue
-     * @covers ::getResult
-     * @covers ::hasOnlyTextNodes
-     * @covers \SandcoreDev\XmlAnalyzer\Result::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Result::setAttributes
-     * @covers \SandcoreDev\XmlAnalyzer\Result::setChild
-     * @covers \SandcoreDev\XmlAnalyzer\Result::setChildren
-     * @covers \SandcoreDev\XmlAnalyzer\Result::setType
-     * @covers \SandcoreDev\XmlAnalyzer\Types\BaseType::values
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\BaseNumber::hasRange
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\BaseUnsignedInteger::minValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Big\Signed::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Big\Signed::minValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Big\Unsigned::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Boolean::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Boolean::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\FloatingPoint::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\FloatingPoint::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Signed::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Signed::minValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Unsigned::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Small\Signed::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Small\Signed::minValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Small\Unsigned::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Signed::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Signed::minValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Unsigned::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Signed::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Signed::minValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Unsigned::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\String\Boolean::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\String\Boolean::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\String\Enumeration::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\String\Enumeration::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\String\Name::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\String\RandomString::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\String\Url::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\String\Url::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Timestamp\Date::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Timestamp\Date::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Timestamp\DateTime::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Timestamp\DateTime::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Timestamp\Time::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Timestamp\Time::is
      * @throws LoadingException
+     * @uses \SandcoreDev\XmlAnalyzer\Result::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Result::setAttributes
+     * @uses \SandcoreDev\XmlAnalyzer\Result::setChild
+     * @uses \SandcoreDev\XmlAnalyzer\Result::setChildren
+     * @uses \SandcoreDev\XmlAnalyzer\Result::setType
+     * @uses \SandcoreDev\XmlAnalyzer\Types\BaseType::values
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\BaseNumber::hasRange
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\BaseUnsignedInteger::minValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Big\Signed::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Big\Signed::minValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Big\Unsigned::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Boolean::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Boolean::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\FloatingPoint::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\FloatingPoint::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Signed::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Signed::minValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Unsigned::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Small\Signed::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Small\Signed::minValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Small\Unsigned::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Signed::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Signed::minValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Unsigned::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Signed::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Signed::minValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Unsigned::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Boolean::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Boolean::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Enumeration::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Enumeration::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Name::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\RandomString::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Url::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Url::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\Date::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\Date::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\DateTime::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\DateTime::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\Time::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\Time::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Boolean::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Enumeration::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Name::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Url::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\Date::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\DateTime::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\Time::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::analyze
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::analyzeAttributes
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::analyzeChildNodes
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::analyzeTextNode
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::analyzeValue
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::getResult
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::hasOnlyTextNodes
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::__construct
      */
     public function testProcessFile(): void
     {
@@ -128,9 +136,9 @@ class XmlAnalyzerTest extends TestCase
     }
 
     /**
-     * @covers ::__construct
      * @covers ::processFile
      * @throws LoadingException
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::__construct
      */
     public function testProcessFileException(): void
     {
@@ -140,59 +148,67 @@ class XmlAnalyzerTest extends TestCase
     }
 
     /**
-     * @covers ::__construct
      * @covers ::process
-     * @covers ::analyze
-     * @covers ::analyzeTextNode
-     * @covers ::hasOnlyTextNodes
-     * @covers ::analyzeAttributes
-     * @covers ::analyzeChildNodes
-     * @covers ::analyzeValue
-     * @covers ::getResult
-     * @covers \SandcoreDev\XmlAnalyzer\Result::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Result::setAttributes
-     * @covers \SandcoreDev\XmlAnalyzer\Result::setChild
-     * @covers \SandcoreDev\XmlAnalyzer\Result::setChildren
-     * @covers \SandcoreDev\XmlAnalyzer\Result::setType
-     * @covers \SandcoreDev\XmlAnalyzer\Types\BaseType::values
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\BaseNumber::hasRange
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\BaseUnsignedInteger::minValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Big\Signed::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Big\Signed::minValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Big\Unsigned::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Boolean::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Boolean::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\FloatingPoint::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\FloatingPoint::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Signed::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Signed::minValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Unsigned::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Small\Signed::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Small\Signed::minValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Small\Unsigned::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Signed::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Signed::minValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Unsigned::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Signed::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Signed::minValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Unsigned::maxValue
-     * @covers \SandcoreDev\XmlAnalyzer\Types\String\Boolean::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\String\Boolean::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\String\Enumeration::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\String\Enumeration::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\String\Name::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\String\RandomString::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\String\Url::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\String\Url::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Timestamp\Date::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Timestamp\Date::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Timestamp\DateTime::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Timestamp\DateTime::is
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Timestamp\Time::__construct
-     * @covers \SandcoreDev\XmlAnalyzer\Types\Timestamp\Time::is
      * @throws LoadingException
+     * @uses \SandcoreDev\XmlAnalyzer\Result::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Result::setAttributes
+     * @uses \SandcoreDev\XmlAnalyzer\Result::setChild
+     * @uses \SandcoreDev\XmlAnalyzer\Result::setChildren
+     * @uses \SandcoreDev\XmlAnalyzer\Result::setType
+     * @uses \SandcoreDev\XmlAnalyzer\Types\BaseType::values
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\BaseNumber::hasRange
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\BaseUnsignedInteger::minValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Big\Signed::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Big\Signed::minValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Big\Unsigned::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Boolean::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Boolean::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\FloatingPoint::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\FloatingPoint::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Signed::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Signed::minValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Unsigned::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Small\Signed::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Small\Signed::minValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Small\Unsigned::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Signed::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Signed::minValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Unsigned::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Signed::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Signed::minValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Unsigned::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Boolean::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Boolean::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Enumeration::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Enumeration::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Name::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\RandomString::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Url::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Url::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\Date::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\Date::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\DateTime::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\DateTime::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\Time::__construct
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\Time::is
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Boolean::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Enumeration::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Name::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\Types\String\Url::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\Date::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\DateTime::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Timestamp\Time::isNot
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::analyze
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::analyzeAttributes
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::analyzeChildNodes
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::analyzeTextNode
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::analyzeValue
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::getResult
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::hasOnlyTextNodes
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::__construct
      */
     public function testProcess(): void
     {
@@ -202,9 +218,9 @@ class XmlAnalyzerTest extends TestCase
     }
 
     /**
-     * @covers ::__construct
      * @covers ::process
      * @throws LoadingException
+     * @uses \SandcoreDev\XmlAnalyzer\XmlAnalyzer::__construct
      */
     public function testProcessException(): void
     {

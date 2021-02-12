@@ -288,8 +288,34 @@ abstract class BaseTypeTest extends TestCase
 
     /**
      * @covers ::__construct()
-     * @dataProvider dataProviderAllowed
      * @param string $alias
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\BaseUnsignedInteger::minValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Unsigned::maxValue
+     * @dataProvider dataProviderAllowed
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Timestamp\Time::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Timestamp\DateTime::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Timestamp\Date::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\String\Url::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\String\Name::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\String\Enumeration::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\BaseType::__construct
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\String\Boolean::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Signed::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Signed::minValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Big\Signed::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Big\Signed::minValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Unsigned::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Signed::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Signed::minValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Small\Unsigned::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Small\Signed::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Small\Signed::minValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Unsigned::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Signed::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Signed::minValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Boolean::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Big\Unsigned::maxValue
      */
     public function testAllowed(string $alias): void
     {
@@ -329,8 +355,37 @@ abstract class BaseTypeTest extends TestCase
 
     /**
      * @covers ::__construct
-     * @dataProvider dataProviderDenied
      * @param string $alias
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\BaseUnsignedInteger::minValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Unsigned::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\BaseUnsignedInteger::minValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Unsigned::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Timestamp\Time::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Timestamp\DateTime::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Timestamp\Date::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\String\Url::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\String\Name::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\String\Enumeration::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\BaseType::__construct
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\String\Boolean::isNot
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Signed::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Tiny\Signed::minValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Big\Signed::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Big\Signed::minValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Unsigned::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Signed::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Standard\Signed::minValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Small\Unsigned::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Small\Signed::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Small\Signed::minValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Unsigned::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Signed::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Signed::minValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Boolean::maxValue
+     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Big\Unsigned::maxValue
+     * @dataProvider dataProviderDenied
      */
     public function testDenied(string $alias): void
     {
