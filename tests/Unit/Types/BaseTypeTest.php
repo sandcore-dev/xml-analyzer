@@ -314,8 +314,8 @@ abstract class BaseTypeTest extends TestCase
      * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Unsigned::maxValue
      * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Signed::maxValue
      * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Signed::minValue
-     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Boolean::maxValue
-     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Big\Unsigned::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Boolean::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Big\Unsigned::maxValue
      */
     public function testAllowed(string $alias): void
     {
@@ -383,8 +383,8 @@ abstract class BaseTypeTest extends TestCase
      * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Unsigned::maxValue
      * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Signed::maxValue
      * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Medium\Signed::minValue
-     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Boolean::maxValue
-     * @uses \SandcoreDev\XmlAnalyzer\Types\Number\Big\Unsigned::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Boolean::maxValue
+     * @uses         \SandcoreDev\XmlAnalyzer\Types\Number\Big\Unsigned::maxValue
      * @dataProvider dataProviderDenied
      */
     public function testDenied(string $alias): void
@@ -398,6 +398,39 @@ abstract class BaseTypeTest extends TestCase
         foreach ($values as $value) {
             new $subjectClassName($value, null);
         }
+    }
+
+    /**
+     * @covers ::__construct
+     * @covers \SandcoreDev\XmlAnalyzer\Types\BaseType::__construct
+     * @uses   \SandcoreDev\XmlAnalyzer\Types\Number\BaseInteger::isNot
+     * @uses   \SandcoreDev\XmlAnalyzer\Types\Timestamp\Time::isNot
+     * @uses   \SandcoreDev\XmlAnalyzer\Types\Timestamp\DateTime::isNot
+     * @uses   \SandcoreDev\XmlAnalyzer\Types\Timestamp\Date::isNot
+     * @uses   \SandcoreDev\XmlAnalyzer\Types\String\Url::isNot
+     * @uses   \SandcoreDev\XmlAnalyzer\Types\String\Name::isNot
+     * @uses   \SandcoreDev\XmlAnalyzer\Types\String\Enumeration::isNot
+     * @uses   \SandcoreDev\XmlAnalyzer\Types\String\Boolean::isNot
+     */
+    public function testValues(): void
+    {
+        $subjectClassName = $this->subjectClassName;
+        $subjectValues = $this->subjectValues;
+        $instance = null;
+
+        /** @noinspection PhpUnusedLocalVariableInspection */
+        foreach ([1, 2] as $dummy) {
+            foreach ($subjectValues as $value) {
+                $instance = new $subjectClassName($value, $instance);
+            }
+        }
+
+        $expected = array_merge(
+            $subjectValues,
+            $subjectValues
+        );
+
+        $this->assertEquals($expected, $instance->values());
     }
 
     protected static function substituteGroups(array $aliases): array
