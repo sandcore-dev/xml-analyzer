@@ -8,6 +8,6 @@ class Enumeration extends RandomString
     {
         return is_numeric($value)
             || substr_count($value, ' ') > 1
-            || preg_match('/[^[:alpha:][:space:]]/', $value);
+            || !preg_match('/^[\pL ]+$/u', $value);
     }
 }

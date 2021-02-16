@@ -157,7 +157,7 @@ abstract class BaseTypeTest extends TestCase
         ],
         self::NAME => [
             Name::class,
-            ['Jane Doe', 'John Doe', 'Foo Bar'],
+            ['Jane Doe', 'John Doe', 'Foo Bar', 'André the Giant'],
         ],
         self::ENUMERATION => [
             Enumeration::class,
