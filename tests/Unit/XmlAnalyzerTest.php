@@ -61,8 +61,6 @@ class XmlAnalyzerTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         static::$result = (new XmlAnalyzer())->processFile(__DIR__ . '/Files/Test.xml');
-
-        //die(print_r(static::$result, true));
     }
 
     /**
